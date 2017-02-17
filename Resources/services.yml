@@ -1,0 +1,8 @@
+services:
+    fluent.logger:
+        class: Fluent\Logger\FluentLogger
+        arguments: ['%fluent_handler.host%', '%fluent_handler.port%']
+
+    monolog.handler.fluent:
+        class: FluentHandlerBundle\Service\FluentHandlerService
+        arguments: ['@fluent.logger']
