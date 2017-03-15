@@ -21,6 +21,7 @@ class FluentHandlerExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        $container->setParameter('fluent_handler.channel', $config['channel']);
         $container->setParameter('fluent_handler.host', $config['host']);
         $container->setParameter('fluent_handler.port', $config['port']);
 

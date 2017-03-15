@@ -24,6 +24,7 @@ class FluentHandlerServiceTest extends \PHPUnit_Framework_TestCase
             ->with($expectedTag, $expectedData);
 
         $fluentHandlerService = new FluentHandlerService($this->mockFluentLogger);
+        $fluentHandlerService->setChannel('test');
         $fluentHandlerService->write($record);
     }
 
@@ -36,7 +37,7 @@ class FluentHandlerServiceTest extends \PHPUnit_Framework_TestCase
                     'level' => 200,
                     'channel' => 'request',
                 ],
-                'request',
+                'test',
                 [
                     'message' => 'Log message',
                     'level' => 200,

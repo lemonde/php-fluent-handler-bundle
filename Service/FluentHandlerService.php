@@ -15,6 +15,11 @@ class FluentHandlerService extends AbstractProcessingHandler
     private $logger;
 
     /**
+     * @var string
+     */
+    private $channel;
+
+    /**
      * @param FluentLogger $logger
      * @param string $level
      * @param bool $bubble
@@ -32,7 +37,7 @@ class FluentHandlerService extends AbstractProcessingHandler
     public function write(array $record)
     {
         $record['severity'] = Logger::getLevelName($record['level']);
-        $this->logger->post($record['channel'], $record);
+        $this->logger->post($this->channel, $record);
     }
 
     /**
@@ -41,5 +46,13 @@ class FluentHandlerService extends AbstractProcessingHandler
     protected function getDefaultFormatter(): JsonFormatter
     {
         return new JsonFormatter();
+    }
+
+    /**
+     * @param string $channel
+     */
+    public function setChannel(string $channel)
+    {
+        $this->channel = $channel;
     }
 }
