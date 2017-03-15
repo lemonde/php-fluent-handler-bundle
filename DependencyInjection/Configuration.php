@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('channel')->end()
                 ->scalarNode('host')->end()
                 ->integerNode('port')->end()
             ->end()
