@@ -6,5 +6,5 @@ services:
     monolog.handler.fluent:
         class: FluentHandlerBundle\Service\FluentHandlerService
         arguments: ['@fluent.logger']
-        calls: 
+        calls:
             - [setChannel, ['%fluent_handler.channel%']]
